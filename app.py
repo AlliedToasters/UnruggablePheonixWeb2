@@ -1,5 +1,12 @@
 from flask import Flask, request, send_file, Response
 import json
+
+description = """
+The Unruggable Phoenix is the first NFT collection made by the $WGMI (ERC-20) community. 
+The collection consists of 888 unique Phoenix Punks, which represent how we, as a community, rose from the ashes after the token was initially rugged by its creator. 
+All royalties from secondary sales of NFTs in this collection will be directed towards supplying liquidity for the $WGMI token, via purchasing ETH/WGMI LP tokens and locking that liquidity away forever by burning those LP tokens.
+"""
+
 with open("./metadata.json", "r") as f:
     md = json.loads(f.read())
 
@@ -8,7 +15,8 @@ def get_metadata(id, md=md):
         return json.dumps({"error":"id is not between 1 and 888"})
     else:
         data = md[str(id)]
-        data["image"] = "https://i.ibb.co/HCwP1Gz/pheonix-punk-sample.jpg"
+        data["image"] = "https://i.ibb.co/N1jX58g/preview.gif"
+        data["description"] = description
         return json.dumps(md[str(id)])
 
 app = Flask(__name__)
