@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_file
 import json
 with open("./metadata.json", "r") as f:
     md = json.loads(f.read())
@@ -20,5 +20,5 @@ def healthcheck():
 @app.route('/metadata')
 def metadata():
     id = request.args.get('id')
-    md = get_metadata(id)
-    return md
+    path = f"./data/{id}.json"
+    return send_file(path)
