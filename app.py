@@ -4,7 +4,7 @@ with open("./metadata.json", "r") as f:
     md = json.loads(f.read())
 
 def get_metadata(id, md=md):
-    if not 0 < id < 889:
+    if not 0 < int(id) < 889:
         return json.dumps({"error":"id is not between 1 and 888"})
     else:
         return json.dumps(md[str(id)])
