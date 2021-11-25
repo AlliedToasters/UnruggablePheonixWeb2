@@ -7,6 +7,8 @@ def get_metadata(id, md=md):
     if not 0 < int(id) < 889:
         return json.dumps({"error":"id is not between 1 and 888"})
     else:
+        data = md[str(id)]
+        data["image"] = "https://i.ibb.co/HCwP1Gz/pheonix-punk-sample.jpg"
         return json.dumps(md[str(id)])
 
 app = Flask(__name__)
@@ -18,4 +20,5 @@ def healthcheck():
 @app.route('/metadata')
 def metadata():
     id = request.args.get('id')
-    return get_metadata(id)
+    md = get_metadata(id)
+    return md
