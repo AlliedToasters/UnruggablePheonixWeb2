@@ -19,6 +19,7 @@ def get_metadata(id, md=md):
         data = md[str(id)]
         data["image"] = f"https://ipfs.io/ipfs/bafybeienvbzfs4gvasydbakejf7g2moz75kiqxj5wxso7wqkurworu2gpq/{id}.jpg"
         data["description"] = description
+        data["name"] = f"Unruggable #{id}"
         return json.dumps(data)
 
 app = Flask(__name__)
