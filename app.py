@@ -1,11 +1,11 @@
 from flask import Flask, request, send_file, Response
 import json
 
-collection_name = "The Unruggables"
+collection_name = "Unruggable"
 
 description = f"""
-The {collection_name} is the first NFT collection made by the $WGMI (ERC-20) community. \n 
-The collection consists of 888 unique pheonixes, which represent how we, as a community, rose from the ashes after the token was initially rugged by its creator. \n 
+The {collection_name}s is the first NFT collection made by the $WGMI (ERC-20) community. \n 
+The collection consists of 888 unique {collection_name} pheonixes, which represent how we, as a community, rose from the ashes after the token was initially rugged by its creator. \n 
 All royalties from secondary sales of NFTs in this collection will be directed towards supplying liquidity for the $WGMI token, via purchasing ETH/WGMI LP tokens and locking that liquidity away forever by burning those LP tokens.
 """
 
@@ -19,7 +19,7 @@ def get_metadata(id, md=md):
         data = md[str(id)]
         data["image"] = f"https://ipfs.io/ipfs/bafybeienvbzfs4gvasydbakejf7g2moz75kiqxj5wxso7wqkurworu2gpq/{id}.jpg"
         data["description"] = description
-        data["name"] = "Pheonix Punk " + data["name"]
+        data["name"] = f"{collection_name} " + data["name"]
         return json.dumps(data)
 
 app = Flask(__name__)
